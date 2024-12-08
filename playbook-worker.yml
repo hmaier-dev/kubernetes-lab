@@ -1,0 +1,52 @@
+---
+- name: Kubernetes Setup for worker nodes
+  become: yes  # Run tasks with elevated privileges
+  tasks:
+    - name: Update apt repository
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install dependencies for Kubernetes
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+        state: present
+
+    - name: Add Kubernetes GPG key
+      command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+    - name: Add Kubernetes apt repository
+      copy:
+        dest: /etc/apt/sources.list.d/kubernetes.list
+        content: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+
+    - name: Update apt repository (post Kubernetes repo addition)
+      apt:
+        update_cache: yes
+
+    - name: Install Kubernetes tools (kubeadm, kubelet, kubectl)
+      apt:
+        name:
+          - kubelet
+          - kubeadm
+          - kubectl
+        state: present
+
+    - name: Enable kubelet service
+      systemd:
+        name: kubelet
+        state: started
+        enabled: yes
