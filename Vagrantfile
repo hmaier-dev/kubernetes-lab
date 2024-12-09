@@ -4,6 +4,11 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/debian-11"
 
+  config.vm.provider "virtualbox" do |v|
+      v.memory = 3072
+      v.cpus = 2
+  end
+
   config.vm.define "main" do |main|
     main.vm.hostname = "k8s-main"
     main.vm.network "private_network", type: "dhcp"
