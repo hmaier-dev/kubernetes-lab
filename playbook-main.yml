@@ -1,5 +1,6 @@
 ---
 - name: Kubernetes Setup for the main node
+  hosts: all
   become: yes  # Run tasks with elevated privileges
   tasks:
     - name: Update apt repository
