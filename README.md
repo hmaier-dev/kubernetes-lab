@@ -1,3 +1,7 @@
+> [!WARNING]  
+> By default this cluster requires a total of 15GB RAM!
+
+
 ## Prerequisites
 
 The following programs need be installed:
