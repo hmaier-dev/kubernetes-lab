@@ -25,13 +25,13 @@
           - curl
         state: present
 
-    - name: Add Kubernetes GPG key
-      command: curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    - name: Add Kubernetes public signing key
+      command: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
     - name: Add Kubernetes apt repository
       copy:
         dest: /etc/apt/sources.list.d/kubernetes.list
-        content: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+        content: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /"
 
     - name: Update apt repository (post Kubernetes repo addition)
       apt:
