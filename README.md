@@ -12,3 +12,13 @@ With `vagrant` you need to set the default provider for the virtual machines. Th
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 ```
 You can use different backends: https://developer.hashicorp.com/vagrant/docs/providers/default
+
+## TODO
+
+- [ ] Kubernetes need different mac-addresses per worker. Check if this is provided which virtualbox.
+
+- [ ] Turn off swap permanently.
+
+- [ ] 3 GB of RAM for all machines.
+
+
