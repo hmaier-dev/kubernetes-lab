@@ -1,5 +1,5 @@
 > [!WARNING]  
-> By default this cluster requires a total of 15GB RAM!
+> By default this cluster requires a total of 15GB RAM. You can change this in the `Vagrantfile`.
 
 
 ## Prerequisites
@@ -23,6 +23,6 @@ You can use different backends: https://developer.hashicorp.com/vagrant/docs/pro
 
 - [ ] Turn off swap permanently.
 
-- [ ] 3 GB of RAM for all machines.
+- [x] 3 GB of RAM for all machines.
 
 
