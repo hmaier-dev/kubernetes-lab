@@ -1,5 +1,5 @@
 > [!WARNING]  
-> By default this cluster requires a total of 15GB RAM. You can change this in the `Vagrantfile`.
+> By default this cluster requires a total of 9GB RAM. You can change this in the `Vagrantfile`.
 
 
 ## Prerequisites

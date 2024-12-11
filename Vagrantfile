@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     end
   end
   
-  (1..4).each do |i|
+  (1..2).each do |i|
     config.vm.define "worker#{i}" do |worker|
       worker.vm.hostname = "k8s-worker#{i}"
       worker.vm.network "private_network", type: "dhcp"
